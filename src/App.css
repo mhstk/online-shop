@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'BYekan';
+    src: local('BYekan'), url(assets/BYekan.woff2) format('woff2');
+    font-style: normal;
+    font-weight: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: BYekan, sans-serif;
+    font-size: 16px;
+}
+
+.app {
+    max-width: 1280px;
+    margin: auto;
+}

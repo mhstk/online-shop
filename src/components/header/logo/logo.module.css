@@ -1,0 +1,9 @@
+.logo {
+    margin: 0 25px;
+    font-size: calc(16px * 1.2);
+    color: #0EBAC5;
+    text-align: right;
+    text-decoration: none;
+    cursor: pointer;
+
+}
