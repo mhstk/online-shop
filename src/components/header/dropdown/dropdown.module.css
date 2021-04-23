@@ -84,3 +84,10 @@
     background-color: #FFC80A;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+  .dropdown {
+    display: none;
+  }
+}

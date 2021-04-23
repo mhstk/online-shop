@@ -1,0 +1,18 @@
+.button {
+    display: none;
+    margin-left: 20px;
+}
+
+.button div {
+    width: 27px;
+    height: 4px;
+    background-color: #0EBAC5;
+    border-radius: 5px;
+    margin: 6px 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .button {
+        display: block;
+    }
+}

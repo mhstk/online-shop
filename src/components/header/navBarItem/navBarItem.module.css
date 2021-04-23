@@ -9,3 +9,10 @@
 .navBarItem:hover {
     color: #0EBAC5;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .navBarItem {
+        display: none;
+    }
+}
