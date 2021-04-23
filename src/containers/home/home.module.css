@@ -1,0 +1,12 @@
+.home {
+    width: 100%;
+    min-height: calc(100vh - 65px - 50px);
+    background-color: #ededed;
+
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
