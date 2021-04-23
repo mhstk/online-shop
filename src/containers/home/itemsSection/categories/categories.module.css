@@ -1,9 +1,14 @@
 .categories {
     background-color: white;
-    box-shadow: 4px 8px 16px -3px rgba(0,0,0,0.05);
+    box-shadow: 4px 8px 16px -3px rgba(0, 0, 0, 0.05);
+    max-height: 515px;
+    overflow: scroll;
 }
-
-.categories h2 {
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+.categories h3 {
     margin: 15px 10px;
 }
 
