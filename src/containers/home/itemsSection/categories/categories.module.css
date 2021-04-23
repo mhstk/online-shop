@@ -1,0 +1,42 @@
+.categories {
+    background-color: white;
+    box-shadow: 4px 8px 16px -3px rgba(0,0,0,0.05);
+}
+
+.categories h2 {
+    margin: 15px 10px;
+}
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-color: #ededed;
+}
+
+.categories ul {
+    list-style: none;
+    margin: 15px 10px;
+}
+
+.categories li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.categories input {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.categories input:checked {
+    background-color: #009DFF;
+}
