@@ -22,7 +22,7 @@ const Categories = (props) => {
         "دسته بندی 1"
     ];
     return (
-        <div className={styles.categories}>
+        <div className={styles.categories} style={{maxHeight:props.maxHeight}}>
             <h3>دسته‌ بندی ‌ها</h3>
             <div className={styles.line}/>
             <ul>

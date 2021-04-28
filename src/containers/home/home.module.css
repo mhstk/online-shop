@@ -24,13 +24,11 @@
     gap: 15px;
 }
 
-.items {
-    width: 75%;
-
-}
-
 @media only screen and (max-width: 600px) {
     .sidebar {
         display: none;
+    }
+    .section > div:first-of-type {
+      display: none;
     }
 }

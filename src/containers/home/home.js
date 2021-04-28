@@ -5,6 +5,7 @@ import Sorter from "./itemsSection/sorter/sorter";
 import Categories from "./itemsSection/categories/categories";
 import PriceRange from "./itemsSection/priceRange/priceRange";
 import Items from "./itemsSection/items/items";
+import SideToolbarBtn from "./sideToolbar/sideToolbarBtn/sideToolbarBtn";
 const Home = (props) => {
     return (
         <div className={styles.home}>
@@ -13,7 +14,7 @@ const Home = (props) => {
                 <Sorter/>
                 <div className={styles.container}>
                     <div className={styles.sidebar}>
-                        <Categories/>
+                        <Categories maxHeight="515px"/>
                         <PriceRange/>
                     </div>
                     <Items/>

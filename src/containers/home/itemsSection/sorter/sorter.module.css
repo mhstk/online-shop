@@ -29,6 +29,10 @@
 
 @media only screen and (max-width: 600px) {
     .sorter {
-        display: none;
+        gap: 5px;
+        padding: 2px 8px;
+    }
+    .sorter button {
+        font-size: 14px;
     }
 }

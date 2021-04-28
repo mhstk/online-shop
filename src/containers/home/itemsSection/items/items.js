@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./items.module.css";
 import Card from "../../../../utils/card/card";
 import creeper from "../../../../assets/creeper.png"
+import SideToolbarBtn from "../../sideToolbar/sideToolbarBtn/sideToolbarBtn";
 
 const Items = (props) => {
     const l = [
@@ -19,6 +20,7 @@ const Items = (props) => {
     ];
     return (
         <div className={styles.items}>
+            <SideToolbarBtn/>
             {l.map((c) => {
                 return (
                     <Card

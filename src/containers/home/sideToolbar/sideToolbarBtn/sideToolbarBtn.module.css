@@ -1,0 +1,25 @@
+.container {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    padding: 12px 10px;
+}
+
+.container img {
+    width: 25px;
+}
+
+.container button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background-color: inherit;
+    transition: color 0.2s;
+    text-decoration: none;
+    color: #595959;
+}
+
+.container button:hover {
+    color: #0EBAC5;
+}

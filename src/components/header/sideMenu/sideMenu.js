@@ -1,25 +1,9 @@
 import React, {useState} from 'react';
 import styles from "./sideMenu.module.css";
+import useSwipeLeft from "../../../hooks/useSwipeLeft";
 
 const SideMenu = (props) => {
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
-
-    function handleTouchStart(e) {
-        setTouchStart(e.targetTouches[0].clientX);
-    }
-
-    function handleTouchMove(e) {
-        setTouchEnd(e.targetTouches[0].clientX);
-    }
-
-    function handleTouchEnd() {
-        if (touchStart - touchEnd > 150) {
-            // do your stuff here for left swipe
-            props.closeHandler();
-        }
-    }
-
+    const {handleTouchStart, handleTouchMove, handleTouchEnd} = useSwipeLeft(props.closeHandler);
     return (
         <div className={styles.sidenav} ref={props.sidemenuRef}
              onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
