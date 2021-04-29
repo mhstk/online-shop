@@ -3,6 +3,7 @@
     width: 100%;
     background-color: white;
     padding: 12px 10px;
+    display: none;
 }
 
 .container img {
@@ -22,4 +23,11 @@
 
 .container button:hover {
     color: #0EBAC5;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .container {
+        display: block;
+    }
 }
