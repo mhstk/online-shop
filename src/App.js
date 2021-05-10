@@ -11,6 +11,7 @@ import Footer from "./components/footer/footer";
 import Login from "./containers/login/login"
 import SignUp from './containers/signUp/signUp';
 import Profile from './containers/profile/profile';
+import AdminProfile from './containers/adminProfile/adminProfile';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                     {/* <Home /> */}
                     {/* <SignUp /> */}
                     <Profile />
+                    {/* <AdminProfile /> */}
                 </Route>
             </Switch>
             <Footer/>

@@ -1,13 +1,13 @@
 import { useState } from "react";
+import InputCard from "../../components/inputCard/inputCard";
 import MyButton from "../../components/myButton/myButton";
 import Tabs from "../../components/tabs/tabs"; 
-import ProfileInfo from "./profileInfo/profileInfo";
-import Reciepts from "./reciepts/reciepts";
-import styles from "./profile.module.css";
-const Profile = () => {
+import MyTable from "../../components/myTable/myTable";
+import styles from "./adminProfile.module.css";
+const AdminProfile = () => {
 
     const [selectedTab, setSelectedTab] = useState(0)
-    const [profileName, setProfileName] = useState("هادی")
+    const [name, setName] = useState("هادی")
     const [lastName, setLastName] = useState("طباطبایی")
     const [accountBalance, setAccountBalance] = useState("۱۰،۰۰۰")
     const [address, setAddress] = useState("تهران، تهران، امیرکبیر")
@@ -34,22 +34,30 @@ const Profile = () => {
         <div className={styles.profile}>
             <div className={styles.headline}>
                 <h5>
-                    {profileName} عزیز، خوش آمدید |
+                    {name} عزیز، خوش آمدید |
                 </h5>
                 <pre> موجودی حساب شما: {accountBalance}</pre>
                 <MyButton className={styles.btn_balance} text="افزایش موجودی" />
             </div>
-            <Tabs className={styles.tabs} itemsList={["پروفایل", "رسید ها"]}
-                totalWidth="280" activeIndex={selectedTab}
+            <Tabs className={styles.tabs} itemsList={["لیست کالاها" , "لیست دسته ها" , "رسید ها"]}
+                totalWidth="450" activeIndex={selectedTab}
                 onTabClicked={onTabClicked}
             />
             <div className={styles.content_container}>
-                {(selectedTab===0) && <ProfileInfo profileName={profileName} 
-                    lastName={lastName} address={address}/>}
-                {(selectedTab===1) && <Reciepts table={table}/>}
+                <div className={`${styles.productLists} 
+                    ${(selectedTab===1) && styles.active}`}>
+                    DD
+                </div>
+                <div className={`${styles.receipts}
+                    ${(selectedTab === 2) && styles.active}`}>
+                    <div>
+                        <MyTable tableObj={table} className={styles.table}/>
+                    </div>
+
+                </div>
             </div>
         </div>
     )
 }
 
-export default Profile
+export default AdminProfile

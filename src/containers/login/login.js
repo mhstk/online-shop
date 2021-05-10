@@ -5,7 +5,7 @@ import styles from "./login.module.css"
 const Login = () => {
     return (
         <div className={styles.login}>
-            <h5>فروشگاه - ورود</h5>
+            <h5>حُجرة - ورود</h5>
             <InputCard className={styles.moreMargin} text="ایمیل"/>
             <InputCard className={styles.moreMargin} text="رمز عبور" isPassword={true}/>
             <MyButtom className={styles.mybtn} text="ورود" />

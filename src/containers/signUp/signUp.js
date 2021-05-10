@@ -5,7 +5,7 @@ import styles from "./signUp.module.css"
 const SignUp = () => {
     return (
         <div className={styles.signup}>
-            <h5>فروشگاه - ثبت نام</h5>
+            <h5>حُجرة - ثبت نام</h5>
             <div>
                 <div className={styles.column_container}>
                     <InputCard text="نام" />
