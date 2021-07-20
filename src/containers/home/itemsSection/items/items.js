@@ -1,27 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "./items.module.css";
 import Card from "../../../../utils/card/card";
 import creeper from "../../../../assets/creeper.png"
 import SideToolbarBtn from "../../sideToolbar/sideToolbarBtn/sideToolbarBtn";
 
 const Items = (props) => {
-    const l = [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ];
+
+
     return (
         <div className={styles.items}>
             <SideToolbarBtn/>
-            {l.map((c) => {
+            {props.items.map((c) => {
                 return (
                     <Card
                         image={creeper}

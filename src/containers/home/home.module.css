@@ -12,9 +12,11 @@
 }
 
 .container {
+    height: 100%;
     display: flex;
     direction: rtl;
     gap: 15px;
+    min-height: calc(100vh - 65px - 50px);
 }
 
 .sidebar {
@@ -23,6 +25,21 @@
     flex-direction: column;
     gap: 15px;
 }
+
+.pagiation_cont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.page_item_cont{
+    width: 100%;
+    min-height: inherit;
+    height: 100%;
+}
+
 
 @media only screen and (max-width: 600px) {
     .sidebar {

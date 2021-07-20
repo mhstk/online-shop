@@ -14,33 +14,13 @@
     justify-content: center;
     align-items: flex-end;
     margin-bottom: 45px;
-    margin-top: 100px;
+    margin-top: 30px;
 
 }
 .headline h5{
     font-size: 1.5em;
     position: relative;
     bottom: -6px;
-}
-
-.btn_balance{
-    height: 20px;
-    font-size: 0.7em;
-    padding: 0 5px;
-    margin-right: 10px;;
-}
-
-.btn_balance:hover{
-    box-shadow: 0px 10px 8px -7px#ffca0aa1;
-}
-
-.headline p *{
-    font-size: 0.75em;
-}
-
-
-.long_input input{
-    width: 730px;
 }
 
 .tabs{
@@ -52,54 +32,9 @@
     width: 100%;
 }
 
-.profile_info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.input_name{
-    margin-left: 20px;
-}
-
-.btn_edit{
-    padding: 5px 30px;
-    margin-top: 40px;
-    font-size: 1em;
+@media screen and (max-width: 880px){
+    .headline h5{
+        font-size: 1.8em;
+    }
     
-}
-
-
-.content_container>* {
-    display: none;
-}
-
-.active{
-    display: flex;
-}
-
-.receipts{
-    justify-content: center;
-}
-
-.receipts div{
-    background-color: white;
-    padding: 5px 20px;
-    width: 75%;
-    overflow-x: hidden;
-    
-}
-
-.table{
-    table-layout: fixed;
-}
-
-.table td{
-    max-width: 400px;
-    overflow-x: hidden;
-}
-
-.table th:last-child{
-    width: 280px;
 }

@@ -1,16 +1,31 @@
 .hero {
     display: flex;
     flex-direction: column;
-    background-color: #F9593A;
+    /* background-color: #F9593A; */
+    background-color: #ffca0a00;
     align-items: center;
     justify-content: center;
     direction: rtl;
     text-align: center;
     height: 93vh;
-    padding-bottom: 13%;;
-    /* position: relative; */
+    padding-bottom: 13%;
+    position: relative;
+    z-index: 1;
 
 }
+
+.hero_back {
+    background-color: #F9593A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+}
+
 
 .hero h1 {
     font-size: 2.4em;

@@ -6,10 +6,10 @@ const Login = () => {
     return (
         <div className={styles.login}>
             <h5>حُجرة - ورود</h5>
-            <InputCard className={styles.moreMargin} text="ایمیل"/>
-            <InputCard className={styles.moreMargin} text="رمز عبور" isPassword={true}/>
+            <InputCard className={styles.moreMargin} text="ایمیل" type="email"/>
+            <InputCard className={styles.moreMargin} text="رمز عبور" type="password" minlength={6}/>
             <MyButtom className={styles.mybtn} text="ورود" />
-            <div className={styles.redircet}><p>اگر دارای حساب کاربری نیستید، <a>ثبت نام</a> کنید</p></div>
+            <div className={styles.redircet}><p>اگر دارای حساب کاربری نیستید، <a href="signup">ثبت نام</a> کنید</p></div>
         </div>
     )
 }

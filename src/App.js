@@ -21,10 +21,19 @@ function App() {
             <Switch>
                 <Route path="/" exact>
                     {/* <Login/> */}
-                    {/* <Home /> */}
+                    <Home />
                     {/* <SignUp /> */}
-                    <Profile />
+                    {/* <Profile /> */}
                     {/* <AdminProfile /> */}
+                </Route>
+                <Route path="/login" exact>
+                    <Login/>
+                </Route>
+                <Route path="/signup" exact>
+                    <SignUp/>
+                </Route>
+                <Route path="/profile" exact>
+                    <Profile/>
                 </Route>
             </Switch>
             <Footer/>

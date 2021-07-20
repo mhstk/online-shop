@@ -11,14 +11,13 @@ const MyTable = ({ className, tableObj }) => {
     }
     const renderTableRows = (rows) => {
         return rows.map((row, index) => {
-            const { receiptId, product, paidPrice, sentAddress } = row
-            console.log(row);
             return (
                 <tr key={index}>
-                    <td>{receiptId}</td>
-                    <td>{product}</td>
-                    <td>{paidPrice}</td>
-                    <td>{sentAddress}</td>
+                    {row.map((element, sec_index) => {
+                        return (
+                            <td key={sec_index}>{element}</td>
+                        )
+                    })}
                 </tr>
             )
         })

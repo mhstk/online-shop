@@ -1,5 +1,5 @@
 import styles from "./inputCard.module.css";
-const InputCard = ({className, text, isPassword, isLarge, inputText}) => {
+const InputCard = ({className, text, isLarge, inputText, type, minlength}) => {
     return (
         <div className={`${styles.container} 
         ${isLarge && styles.large_container} ${className}`}>
@@ -11,7 +11,7 @@ const InputCard = ({className, text, isPassword, isLarge, inputText}) => {
                 </textarea>
             :
 
-                <input type={isPassword ? "password" : "text"} 
+                <input type={type} minlength={minlength} 
                     placeholder={inputText ? inputText : `${text} خود را وارد نمایید`}
                 />
             }

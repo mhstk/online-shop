@@ -9,16 +9,16 @@ const SignUp = () => {
             <div>
                 <div className={styles.column_container}>
                     <InputCard text="نام" />
-                    <InputCard text="ایمیل" />
+                    <InputCard text="ایمیل" type="email"/>
                 </div>
                 <div className={styles.column_container}>
                     <InputCard text="نام خانوادگی" />
-                    <InputCard text="رمز عبور" isPassword={true} />
+                    <InputCard text="رمز عبور" type="password" minlength={6} />
                 </div>
             </div>
             <InputCard text="آدرس" isLarge={true} />
             <MyButtom className={styles.mybtn} text="ثبت نام" />
-            <div className={styles.redircet}><p>اگر دارای حساب کاربری هستید، <a>ورود</a> کنید</p></div>
+            <div className={styles.redircet}><p>اگر دارای حساب کاربری هستید، <a href="/login">ورود</a> کنید</p></div>
         </div>
     )
 }
