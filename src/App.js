@@ -19,7 +19,7 @@ function App() {
         <div className="app">
             <Header/>
             <Switch>
-                <Route path="/" exact>
+                <Route path="/"  exact>
                     {/* <Login/> */}
                     <Home />
                     {/* <SignUp /> */}
@@ -34,6 +34,9 @@ function App() {
                 </Route>
                 <Route path="/profile" exact>
                     <Profile/>
+                </Route>
+                <Route path="/adminprofile" exact>
+                    <AdminProfile />
                 </Route>
             </Switch>
             <Footer/>

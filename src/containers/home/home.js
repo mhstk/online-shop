@@ -17,6 +17,7 @@ const Home = (props) => {
         setShowItems(allItems.slice(start, end))
     }
 
+
     
 
     return (

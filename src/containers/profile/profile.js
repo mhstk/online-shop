@@ -27,6 +27,8 @@ const Profile = () => {
 
     
 
+    
+
 
     return (
         <div className={styles.profile}>

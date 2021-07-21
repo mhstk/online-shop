@@ -19,12 +19,13 @@ const PaginationDiv = ({all_items, onItemsChanged, num_in_page, page_num}) => {
         if (newPage >= 1 && newPage <= endPage && currPage !== newPage){
             var start = (newPage-1)*num_in_page;
             var end = Math.min((newPage-1)*num_in_page+num_in_page, all_items.length );
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: "smooth"
+            });
             onItemsChanged(start, end)
             setCurrPage(newPage)
-            // window.scrollTo({
-            //     top: 0,
-            //     behavior: "smooth"
-            // });
+            
         } 
     }
 
@@ -33,14 +34,14 @@ const PaginationDiv = ({all_items, onItemsChanged, num_in_page, page_num}) => {
 
     return (
         <div>
-            <ul>
-                {(currPage !== 1) && <li><button onClick={() => goPage(currPage-1)}>قبلی</button></li>}
+            <ul className={styles.page_list}>
+                {(currPage !== 1) && <li><button className={styles.page_btn} onClick={() => goPage(currPage-1)}>قبلی</button></li>}
                 {range(1,endPage).map((val) => {
                     return(
-                        <li><button className={currPage === val && styles.selected} onClick={() => goPage(val)}>{val}</button></li>
+                        <li><button className={`${styles.page_btn} ${currPage === val && styles.selected}`} onClick={() => goPage(val)}>{val}</button></li>
                     )
                 })}
-                {(currPage !== endPage) && <li><button onClick={() => goPage(currPage+1)}>بعدی</button></li>}
+                {(currPage !== endPage) && <li><button className={styles.page_btn} onClick={() => goPage(currPage+1)}>بعدی</button></li>}
             </ul>
         </div>
     )
