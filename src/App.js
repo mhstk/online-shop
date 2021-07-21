@@ -16,7 +16,7 @@ import { AuthContext } from './hooks/useAuth';
 
 
 function App() {
-    const existingToken = Json.parse(localStorage.getItem("token"))
+    const existingToken = JSON.parse(localStorage.getItem("token"))
     const [authToken, setAuthToken] = useState(existingToken)
 
     const setToken = (data) => {
