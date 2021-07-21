@@ -1,27 +1,58 @@
 .hero {
     display: flex;
     flex-direction: column;
-    background-color: #F9593A;
+    /* background-color: #F9593A; */
+    background-color: #ffca0a00;
     align-items: center;
     justify-content: center;
     direction: rtl;
     text-align: center;
+    height: 93vh;
+    padding-bottom: 13%;
+    position: relative;
+    z-index: 1;
+
 }
 
+.hero_back {
+    background-color: #F9593A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+    opacity: 0;
+    animation: fade 10s linear infinite;
+}
+
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  5%,95% { opacity: 1 }
+}
+
+
 .hero h1 {
-    font-size: 32px;
-    margin-top: 80px;
+    font-size: 2.4em;
+    /* margin-top: 80px; */
     color: white;
+    font-weight: 600;
 }
 
 .hero input {
-    margin-top: 40px;
+    margin-top: 60px;
     outline: none;
     width: 55%;
     border-radius: 24px;
     border: none;
     padding: 4px 8px;
-    font-size: 14px;
+    font-size: 1.25em;
+    text-align: center;
+    height: 40px;
+    font-weight: 300;
 }
 
 .hero input::placeholder {
@@ -30,22 +61,35 @@
 }
 
 .hero button {
-    margin-top: 35px;
+    margin-top: 45px;
     background-color: #FFC80A;
     color: black;
-    font-size: 16px;
+    font-size: 1.15em;
     border: none;
     border-radius: 24px;
     cursor: pointer;
-    padding: 5px 40px;
+    padding: 8px 40px;
     text-align: center;
+    box-shadow: 0px 10px 20px -5px#ffca0aa1;
+    font-weight: 500;
 }
 
 .hero button:hover {
-    box-shadow: 0px 10px 12px -11px #FFC80A;
+    box-shadow: none;
 }
 
 .hero img {
     margin-top: 30px;
+    position: absolute;
+    bottom: 0;
+    /* left: auto; */
     width: 50%;
+    /* z-index: 0; */
+}
+
+@media only screen and (max-width: 600px){
+    .hero img{
+        width: 85%;
+    }
+    
 }

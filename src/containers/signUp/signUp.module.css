@@ -1,0 +1,50 @@
+.signup {
+    width: 100%;
+    height: calc(100vh - 2*(50px));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ededed;
+    position: relative;
+
+}
+
+.signup div{
+    display: flex;
+}
+
+.column_container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 0 10px;
+}
+
+.signup h5{
+    margin-bottom: 30px;
+    font-size: 1.4em;
+    color: #0EBAC5;
+}
+
+.mybtn{
+    margin-top: 30px;
+}
+
+.redircet{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.redircet a{
+    color: #0EBAC5;
+    cursor: pointer;
+    
+}
+
+.redircet p{
+    font-weight: 400;
+}

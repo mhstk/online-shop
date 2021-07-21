@@ -4,13 +4,27 @@
     font-style: normal;
     font-weight: normal;
 }
+@font-face {
+    font-family: 'Vazir';
+    src: local('Vazir'), url(assets/Vazir-Light.woff) format('woff');
+    font-style: normal;
+    font-weight: normal;
+}
+/* @font-face {
+    font-family: 'Vazir';
+    src: local('Vazir'), url(assets/Vazir.woff) format('woff');
+    font-style: normal;
+    font-weight: 400;
+} */
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: BYekan, sans-serif;
+    font-family: Vazir, sans-serif;
+    font-weight: 700;
     font-size: 16px;
+    direction: rtl;
 }
 
 .app {

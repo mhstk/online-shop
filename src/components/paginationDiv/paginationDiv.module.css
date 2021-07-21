@@ -1,0 +1,25 @@
+.page_list li{
+    display: inline;
+    margin: 0 5px 0 5px;
+}
+
+.page_btn{
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 2px 10px;
+    background-color: #009DFF;
+    color: white;
+
+}
+
+.page_btn:hover{
+    background-color: #4ab6fa;
+    box-shadow: 0px 15px 12px -11px #009DFF;
+
+}
+
+.selected {
+    background-color: #002942;
+    box-shadow: 0px 10px 12px -11px #00385a;
+}

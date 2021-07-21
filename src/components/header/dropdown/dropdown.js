@@ -4,9 +4,9 @@ const Dropdown = (props) => {
     return (
         <div className={styles.dropdown}>
             <button className={styles.dropbtn}>هادی</button>
-            <div className={styles.filler}/>
+            {/* <div className={styles.filler}/> */}
             <div className={styles.dropdownContent}>
-                <a href="#">پروفایل</a>
+                <a href="/profile">پروفایل</a>
                 <a href="#">خروج از حساب</a>
             </div>
         </div>

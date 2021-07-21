@@ -1,0 +1,25 @@
+.receipts{
+    display: flex;
+    justify-content: center;
+}
+
+.receipts div{
+    background-color: white;
+    padding: 5px 20px;
+    width: 75%;
+    overflow-x: hidden;
+    
+}
+
+.table{
+    table-layout: fixed;
+}
+
+.table td{
+    max-width: 400px;
+    overflow-x: hidden;
+}
+
+.table th:last-child{
+    width: 280px;
+}

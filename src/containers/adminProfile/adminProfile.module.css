@@ -1,0 +1,40 @@
+.profile{
+    width: 100%;
+    min-height: calc(100vh - 2*(50px));
+    background-color: #ededed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+ 
+}
+
+.headline{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 45px;
+    margin-top: 30px;
+
+}
+.headline h5{
+    font-size: 1.5em;
+    position: relative;
+    bottom: -6px;
+}
+
+.tabs{
+    margin-bottom: 45px;
+}
+
+.content_container{
+    margin-bottom: 70px;
+    width: 100%;
+}
+
+@media screen and (max-width: 880px){
+    .headline h5{
+        font-size: 1.8em;
+    }
+    
+}
