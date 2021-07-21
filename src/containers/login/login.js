@@ -114,7 +114,7 @@ const Login = ({props}) => {
                     setShow(true);
                     setTimeout(() => {
                         history.replace('/');
-                    }, 3000);
+                    }, 2000);
                 } else {
                     handleLoginError()
                     setShow(true)
