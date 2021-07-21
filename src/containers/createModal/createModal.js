@@ -1,13 +1,13 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { FaTimesCircle } from "react-icons/fa";
 import { useState } from "react";
-import styles from "./editModal.module.css";
+import styles from "./createModal.module.css";
 import ResponseModal from "../responseModal/responseModal";
-const EditModal = (props) => {
+const CreateModal = (props) => {
     const [show, setShow] = useState(true)
     const modal_succ = true;
     const modal_err = false;
-    const modal_msg = "تغییرات با موفقیت ثبت شد!"
+    const modal_msg = "محصول جدید با موفقیت اضافه شد!"
 
     return (
         <div className={styles.modal_body}>
@@ -51,4 +51,4 @@ const EditModal = (props) => {
     );
 }
 
-export default EditModal
+export default CreateModal;

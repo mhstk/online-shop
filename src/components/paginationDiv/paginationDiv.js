@@ -36,9 +36,9 @@ const PaginationDiv = ({all_items, onItemsChanged, num_in_page, page_num}) => {
         <div>
             <ul className={styles.page_list}>
                 {(currPage !== 1) && <li><button className={styles.page_btn} onClick={() => goPage(currPage-1)}>قبلی</button></li>}
-                {range(1,endPage).map((val) => {
+                {range(1,endPage).map((val, index) => {
                     return(
-                        <li><button className={`${styles.page_btn} ${currPage === val && styles.selected}`} onClick={() => goPage(val)}>{val}</button></li>
+                        <li key={index}><button className={`${styles.page_btn} ${currPage === val && styles.selected}`} onClick={() => goPage(val)}>{val}</button></li>
                     )
                 })}
                 {(currPage !== endPage) && <li><button className={styles.page_btn} onClick={() => goPage(currPage+1)}>بعدی</button></li>}

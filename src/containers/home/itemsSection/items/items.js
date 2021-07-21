@@ -5,11 +5,14 @@ import creeper from "../../../../assets/creeper.png"
 import SideToolbarBtn from "../../sideToolbar/sideToolbarBtn/sideToolbarBtn";
 import Modal from '../../../../components/Modal/modal';
 import BuyModal from '../../../buyModal/buyModal';
+import { useAuth } from '../../../../hooks/useAuth';
 
 const Items = (props) => {
     const [show, setShow] = useState(false)
+    const {authToken} = useAuth()
 
     const onBuyClicked = (e, id) => {
+        console.log(authToken);
         console.log("clicked "+ id);
         setShow(true)
     }
@@ -28,6 +31,7 @@ const Items = (props) => {
                         price={"10,000"}
                         button={"خرید محصول"}
                         onClick={onBuyClicked}
+                        key={index}
                     />)
 
             })}

@@ -7,6 +7,7 @@ import PriceRange from "./itemsSection/priceRange/priceRange";
 import Items from "./itemsSection/items/items";
 import SideToolbarBtn from "./sideToolbar/sideToolbarBtn/sideToolbarBtn";
 import PagintaionDiv from "../../components/paginationDiv/paginationDiv";
+import { useAuth } from "../../hooks/useAuth";
 const Home = (props) => {
     const pageSize = 15
 
@@ -21,7 +22,9 @@ const Home = (props) => {
     
 
     return (
+        
         <div className={styles.home}>
+            {console.log(useAuth())}
             <Hero/>
             <section className={styles.section} id="products">
                 <Sorter/>
