@@ -27,8 +27,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.EmailField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    name = models.CharField(max_length=255, default="", blank=True)
-    address = models.TextField(default="", blank=True)
+    first_name = models.CharField(max_length=255, default="", blank=True)
+    last_name = models.CharField(max_length=255, default="", blank=True)
+    address = models.TextField(default="", blank=True, max_length=1000)
     credit = models.IntegerField(default=0)
 
     objects = UserManager()

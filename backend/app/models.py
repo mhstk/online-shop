@@ -20,6 +20,9 @@ class Item(models.Model):
     available = models.IntegerField(default=0)
     sold = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Order(models.Model):
     item_name = models.CharField(max_length=255)
@@ -27,8 +30,11 @@ class Order(models.Model):
     user_name = models.CharField(max_length=255)
     address = models.TextField()
     price = models.IntegerField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now_add=True, blank=True)
     code = models.CharField(max_length=10, unique=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, default=None,
+                             on_delete=models.SET_DEFAULT)
+    item = models.ForeignKey(Item, blank=True, null=True, default=None, on_delete=models.SET_DEFAULT)
 
     DOING = 'doing'
     FINISHED = 'finished'
@@ -39,3 +45,6 @@ class Order(models.Model):
         (CANCELED, 'Canceled'),
     ]
     status = models.CharField(max_length=8, choices=STATUS_CHOICES, default=DOING)
+
+    def __str__(self):
+        return f"{str(self.code)} {str(self.item_name)} {str(self.count)}"
