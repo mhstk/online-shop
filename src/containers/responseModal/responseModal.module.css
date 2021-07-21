@@ -1,11 +1,11 @@
 .modal_icon{
     font-size: 2em;
+    margin-left: 5px;
 }
 
 .modal_body {
     padding: 10px;
     display: flex;
-    width: 60%;
     justify-content: space-around;
     align-items: center;
     /* border-top: 1px solid #eee;

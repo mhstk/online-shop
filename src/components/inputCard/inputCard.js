@@ -14,8 +14,8 @@ const InputCard = ({className, text, onChange, isLarge, inputText, type, minleng
         if (e.target.value.trim() === ""){
             setInpText("")
         }
-        console.log(inpText);
-        onChange(e)
+        // console.log(inpText);
+        onChange(e);
     }
 
     return (
@@ -32,8 +32,8 @@ const InputCard = ({className, text, onChange, isLarge, inputText, type, minleng
                     </textarea>
                 :
 
-                    <input type={type} minlength={minlength} onChange={(e) => handleOnChange(e)}
-                        placeholder={inputText ? inputText : `${text} خود را وارد نمایید`} value={inpText}
+                    <input type={type} minLength={minlength} onChange={(e) => handleOnChange(e)}
+                        placeholder={inputText ? inputText : `${text} خود را وارد نمایید`}
                     />
                 }
                 

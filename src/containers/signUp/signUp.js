@@ -4,10 +4,13 @@ import styles from "./signUp.module.css";
 import Modal from "../../components/Modal/modal";
 import {useState} from 'react';
 import ResponseModal from "../responseModal/responseModal";
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 
 const SignUp = () => {
+    const history = useHistory();
 
     const [show, setShow] = useState(false);
 
@@ -145,11 +148,55 @@ const SignUp = () => {
         return re.test(password);
     }
 
+    function handleSignupError(msg="ثبت نام با مشکل مواجه شد!") {
+        setModal_msg(msg);
+        setModal_succ(false);
+        setModal_err(true);
+    }
+
 
     const onSignUpClicked = (e) => {
-        setShow(true)
-        e.preventDefault()
         e.stopPropagation()
+        e.preventDefault()
+        console.log(emailInp);
+        console.log(passwordInp);
+        console.log(addressInp);
+        console.log(firstnameInp+" "+lastnameInp);
+        if (checkEmail(emailInp) && checkPassword(passwordInp) && checkAddress(addressInp) && checkFirstname(firstnameInp) && checkLastname(lastnameInp)) {
+            axios.post("http://127.0.0.1:8000/user/create", {
+                username: emailInp,
+                password: passwordInp,
+                name: firstnameInp+" "+lastnameInp,
+                address: addressInp,
+            },{headers: {'Content-Type' : 'application/json'}}).then((response) => {
+                if (response.status === 201) {
+                    setModal_msg("ثبت نام با موفقیت انجام شد!");
+                    setModal_succ(true);
+                    setModal_err(false);
+                    setShow(true);
+                    setTimeout(() => {
+                        history.replace('/login');
+                    }, 2000);
+                } else {
+                    console.log(response);
+                    handleSignupError()
+                    setShow(true)
+                }
+
+            }, (error) => {
+                if (error.response.data["username"][0]==="user with this username already exists."){
+                    handleSignupError("کاربری با این ایمیل در سیستم موجود است!")
+                    setShow(true)
+                }else{
+                    handleSignupError()
+                    setShow(true)
+                }
+            });
+        }else{
+            
+            handleSignupError("فیلد ها به درستی پر نشده است!")
+            setShow(true)
+        }
     }
 
 

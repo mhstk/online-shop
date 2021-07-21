@@ -28,9 +28,10 @@ const Categories = (props) => {
             <ul>
                 {l.map((cat,index) => {
                     return (
-                        <li>
+                        <li key={index}>
                             <input type="checkbox" id={index} name={cat}/>
                             <label htmlFor="vehicle1">{cat}</label>
+                            
                         </li>
                     )
                 })}

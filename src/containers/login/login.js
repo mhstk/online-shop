@@ -4,11 +4,14 @@ import styles from "./login.module.css"
 import { useState } from "react"
 import Modal from "../../components/Modal/modal"
 import ResponseModal from "../responseModal/responseModal"
-import EditModal from "../editModal/editModal"
-import BuyModal from "../buyModal/buyModal"
+import {useAuth} from "../../hooks/useAuth"
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const Login = () => {
 
+const Login = ({props}) => {
+
+    const history = useHistory();
     const [show, setShow] = useState(false);
     const [modal_msg, setModal_msg] = useState("ورود با مشکل مواجه شد!")
     const [modal_succ, setModal_succ] = useState(false)
@@ -20,6 +23,8 @@ const Login = () => {
 
     const [emailErr, setEmailErr] = useState({isError: false, errMsg:""})
     const [passwordErr, setPasswordErr] = useState({isError: false, errMsg:""})
+
+    const authContext = useAuth();
 
 
     const handleEmail = (e) => {
@@ -82,11 +87,48 @@ const Login = () => {
         return re.test(password);
     }
 
+    function handleLoginError(msg="ورود با مشکل مواجه شد!") {
+        setModal_msg(msg);
+        setModal_succ(false);
+        setModal_err(true);
+    }
+
+    
+
 
     const onLoginClicked = (e) => {
-        setShow(true)
         e.stopPropagation()
         e.preventDefault()
+        console.log(emailInp);
+        console.log(passwordInp);
+        if (checkEmail(emailInp) && checkPassword(passwordInp)) {
+            axios.post("http://127.0.0.1:8000/user/token", {
+                username: emailInp,
+                password: passwordInp
+            },{headers: {'Content-Type' : 'application/json'}}).then((response) => {
+                if (response.status === 200) {
+                    authContext.setAuthToken(response.data["token"])
+                    setModal_msg("ورود با موفقیت انجام شد!");
+                    setModal_succ(true);
+                    setModal_err(false);
+                    setShow(true);
+                    setTimeout(() => {
+                        history.replace('/');
+                    }, 2000);
+                } else {
+                    handleLoginError()
+                    setShow(true)
+                }
+
+            }, (error) => {
+                handleLoginError()
+                setShow(true)
+            });
+        }else{
+            
+            handleLoginError("فیلد ها به درستی پر نشده است!")
+            setShow(true)
+        }
     }
 
 
@@ -97,9 +139,9 @@ const Login = () => {
             <InputCard className={styles.moreMargin} text="رمز عبور" type="password" minlength={6} onChange={handlePassword} isError={passwordErr.isError} err_msg={passwordErr.errMsg}/>
             <MyButtom className={styles.mybtn} text="ورود" onClick={onLoginClicked}/>
             <div className={styles.redircet}><p>اگر دارای حساب کاربری نیستید، <a href="signup">ثبت نام</a> کنید</p></div>
-            {/* <Modal onClose={() => setShow(false)} show={show}>
+            <Modal onClose={() => setShow(false)} show={show}>
                 <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
-            </Modal> */}
+            </Modal>
             
             
         </div>

@@ -16,28 +16,28 @@ const BuyModal = (props) => {
             <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
             }
             <div className={styles.label_inp_cont}>
-                <lable className={styles.label}>کد کالا</lable>
-                <lable className={styles.label}>{props.id}</lable>
+                <label className={styles.label}>کد کالا</label>
+                <label className={styles.label}>{props.id}</label>
             </div>
 
             <div className={styles.label_inp_cont}>
-                <lable className={styles.label}>نام کالا</lable>
-                <lable className={styles.label}>{props.p_name}</lable>
+                <label className={styles.label}>نام کالا</label>
+                <label className={styles.label}>{props.p_name}</label>
             </div>
 
             <div className={styles.label_inp_cont}>
-                <lable className={styles.label}>قیمت</lable>
-                <lable className={styles.label}>{props.p_price}</lable>
+                <label className={styles.label}>قیمت</label>
+                <label className={styles.label}>{props.p_price}</label>
             </div>
 
             <div className={styles.label_inp_cont}>
-                <lable className={styles.label}>تعداد</lable>
+                <label className={styles.label}>تعداد</label>
                 <input type="number" className={styles.inp}></input>
             </div>
 
             <div className={styles.label_inp_cont}>
-                <lable className={styles.label}>قیمت کل</lable>
-                <lable className={styles.label}>{props.p_price*5}</lable>
+                <label className={styles.label}>قیمت کل</label>
+                <label className={styles.label}>{props.p_price*5}</label>
             </div>
 
 
