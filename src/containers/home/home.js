@@ -23,7 +23,7 @@ const Home = (props) => {
     return (
         <div className={styles.home}>
             <Hero/>
-            <section className={styles.section}>
+            <section className={styles.section} id="products">
                 <Sorter/>
                 <div className={styles.container}>
                     <div className={styles.sidebar}>

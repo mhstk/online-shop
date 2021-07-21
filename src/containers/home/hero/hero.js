@@ -14,9 +14,6 @@ const Hero = (props) => {
         ,
         <div className={styles.hero_back}><img style={{width:"100%", height:"100%", objectFit: "cover"}} src={drop_img} alt="drop"/></div>
 
-
-
-
     ]
 
 

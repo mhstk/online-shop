@@ -30,8 +30,6 @@ const Modal = props => {
                 </button>
             </div>
             <div className={styles.modal_body}>
-                {props.success && <FaCheckCircle color="green" className={styles.modal_icon}/>}
-                {props.error && <FaTimesCircle color="red" className={styles.modal_icon}/>}
                 {props.children}
                 </div>
             <div className={styles.modal_footer}>

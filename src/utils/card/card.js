@@ -9,7 +9,7 @@ const Card = (props) => {
             <div className={styles.line}/>
             <div className={styles.bottom}>
                 <p>{props.price} تومان</p>
-                <button>{props.button}</button>
+                <button onClick={(e) => props.onClick(e, props.id)}>{props.button}</button>
             </div>
         </div>
     );

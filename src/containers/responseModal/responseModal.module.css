@@ -1,0 +1,13 @@
+.modal_icon{
+    font-size: 2em;
+}
+
+.modal_body {
+    padding: 10px;
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+    /* border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee; */
+}

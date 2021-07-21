@@ -24,6 +24,14 @@
     display: flex;
     justify-content: center;
     z-index: -1;
+    opacity: 0;
+    animation: fade 10s linear infinite;
+}
+
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  5%,95% { opacity: 1 }
 }
 
 

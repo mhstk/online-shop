@@ -22,10 +22,10 @@ const Header = (props) => {
             <nav className={styles.header__navBar}>
                 <ul>
                     <Logo/>
-                    <NavBarItem text="صفحه اول"/>
+                    <NavBarItem text="صفحه اول" href="/" />
                     <NavBarItem text="تماس با ما"/>
                     <NavBarItem text="پشتیبانی"/>
-                    <NavBarItem text="محصولات"/>
+                    <NavBarItem text="محصولات" href="/#products"/>
 
                 </ul>
             </nav>

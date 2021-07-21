@@ -3,6 +3,8 @@ import MyButtom from "../../components/myButton/myButton";
 import styles from "./signUp.module.css";
 import Modal from "../../components/Modal/modal";
 import {useState} from 'react';
+import ResponseModal from "../responseModal/responseModal";
+
 
 
 const SignUp = () => {
@@ -147,6 +149,7 @@ const SignUp = () => {
     const onSignUpClicked = (e) => {
         setShow(true)
         e.preventDefault()
+        e.stopPropagation()
     }
 
 
@@ -168,9 +171,10 @@ const SignUp = () => {
             <InputCard text="آدرس" isLarge={true} onChange={handleAddress} isError={addressErr.isError} err_msg={addressErr.errMsg}/>
             <MyButtom className={styles.mybtn} onClick={onSignUpClicked} text="ثبت نام" />
             <div className={styles.redircet}><p>اگر دارای حساب کاربری هستید، <a href="/login">ورود</a> کنید</p></div>
-            <Modal onClose={() => setShow(false)} show={show} success={modal_succ} error={modal_err}>
-                <p>{modal_msg}</p>
+            <Modal onClose={() => setShow(false)} show={show}>
+                <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
             </Modal>
+            
         
         </div>
     )

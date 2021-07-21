@@ -3,6 +3,9 @@ import MyButtom from "../../components/myButton/myButton"
 import styles from "./login.module.css"
 import { useState } from "react"
 import Modal from "../../components/Modal/modal"
+import ResponseModal from "../responseModal/responseModal"
+import EditModal from "../editModal/editModal"
+import BuyModal from "../buyModal/buyModal"
 
 const Login = () => {
 
@@ -82,6 +85,7 @@ const Login = () => {
 
     const onLoginClicked = (e) => {
         setShow(true)
+        e.stopPropagation()
         e.preventDefault()
     }
 
@@ -93,9 +97,11 @@ const Login = () => {
             <InputCard className={styles.moreMargin} text="رمز عبور" type="password" minlength={6} onChange={handlePassword} isError={passwordErr.isError} err_msg={passwordErr.errMsg}/>
             <MyButtom className={styles.mybtn} text="ورود" onClick={onLoginClicked}/>
             <div className={styles.redircet}><p>اگر دارای حساب کاربری نیستید، <a href="signup">ثبت نام</a> کنید</p></div>
-            <Modal onClose={() => setShow(false)} show={show} success={modal_succ} error={modal_err}>
-                <p>{modal_msg}</p>
-            </Modal>
+            {/* <Modal onClose={() => setShow(false)} show={show}>
+                <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
+            </Modal> */}
+            
+            
         </div>
     )
         

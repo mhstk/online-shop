@@ -3,6 +3,7 @@ import MyButton from "../../../components/myButton/myButton";
 import { useState } from "react";
 import Modal from "../../../components/Modal/modal";
 import styles from './profileInfo.module.css';
+import ResponseModal from "../../responseModal/responseModal";
 
 const ProfileInfo = ({profileName, lastName, address}) => {
 
@@ -132,6 +133,7 @@ const ProfileInfo = ({profileName, lastName, address}) => {
     const onSubmitClicked = (e) => {
         setShow(true)
         e.preventDefault()
+        e.stopPropagation()
     }
 
     return (
@@ -145,8 +147,8 @@ const ProfileInfo = ({profileName, lastName, address}) => {
                 text="رمز عبور" type="password" minLength={6} inputText={passwordInp} onChange={handlePassword} isError={passwordErr.isError} err_msg={passwordErr.errMsg} />
             <InputCard text="آدرس" type="text" isLarge={true} inputText={addressInp} onChange={handleAddress} isError={addressErr.isError} err_msg={addressErr.errMsg}/>
             <MyButton className={styles.btn_edit} text="ویرایش اطلاعات" onClick={onSubmitClicked}/>
-            <Modal onClose={() => setShow(false)} show={show} success={modal_succ} error={modal_err}>
-                <p>{modal_msg}</p>
+            <Modal onClose={() => setShow(false)} show={show}>
+                <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
             </Modal>
         </form>
     )
