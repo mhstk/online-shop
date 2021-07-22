@@ -40,6 +40,7 @@ class OrderSerializer(serializers.ModelSerializer):
             'code',
             'user_name',
             'status',
+            'item_name',
         )
         read_only_fields = ('id', 'date', 'address', 'price', 'user_name', 'status')
         write_only_fields = ('item',)
