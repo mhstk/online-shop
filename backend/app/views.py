@@ -105,7 +105,8 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
 
     def get_queryset(self):
-        queryset = self.queryset
+        queryset = queryset = Order.objects.all()
+
         if not self.request.user.is_staff:
             queryset = queryset.filter(user=self.request.user)
         return queryset
