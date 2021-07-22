@@ -20,6 +20,9 @@ class Item(models.Model):
     available = models.IntegerField(default=0)
     sold = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ["-sold"]
+
     def __str__(self):
         return str(self.name)
 
@@ -34,7 +37,7 @@ class Order(models.Model):
     code = models.CharField(max_length=10, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, default=None,
                              on_delete=models.SET_DEFAULT)
-    item = models.ForeignKey(Item, blank=True, null=True, default=None, on_delete=models.SET_DEFAULT)
+    # item = models.ForeignKey(Item, blank=True, null=True, default=None, on_delete=models.SET_DEFAULT)
 
     DOING = 'doing'
     FINISHED = 'finished'

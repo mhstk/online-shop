@@ -32,7 +32,6 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = (
             'id',
-            'item',
             'count',
             'address',
             'price',
@@ -40,9 +39,9 @@ class OrderSerializer(serializers.ModelSerializer):
             'code',
             'user_name',
             'status',
+            'item_name',
         )
-        read_only_fields = ('id', 'date', 'address', 'price', 'user_name', 'status')
-        write_only_fields = ('item',)
+        read_only_fields = ('id', 'date', 'address', 'price', 'user_name', 'status', "code", 'item_name')
 
 
 class OrderEditSerializer(serializers.ModelSerializer):
