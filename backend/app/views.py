@@ -34,7 +34,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         sort = self.request.query_params.get('sort')
         categories = self.request.query_params.get('cat')
         search = self.request.query_params.get('search')
-        queryset = self.queryset
+        queryset = Item.objects.all()
         if sort:
             if sort == "price":
                 queryset = queryset.order_by('-price')

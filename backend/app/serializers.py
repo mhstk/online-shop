@@ -25,12 +25,6 @@ class ItemSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
 
-class BuyItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Order
-        fields = ("count",)
-
-
 class OrderSerializer(serializers.ModelSerializer):
     """Serializer for ingredient objects"""
 
