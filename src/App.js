@@ -10,9 +10,8 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Login from "./containers/login/login"
 import SignUp from './containers/signUp/signUp';
-import Profile from './containers/profile/profile';
-import AdminProfile from './containers/adminProfile/adminProfile';
 import { AuthContext } from './hooks/useAuth';
+import ProfileRed from './containers/profileRed/profileRed';
 
 
 function App() {
@@ -50,10 +49,7 @@ function App() {
                         <SignUp/>
                     </Route>
                     <Route path="/profile" exact>
-                        <Profile/>
-                    </Route>
-                    <Route path="/adminprofile" exact>
-                        <AdminProfile />
+                        <ProfileRed />
                     </Route>
                 </Switch>
                 <Footer/>

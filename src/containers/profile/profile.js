@@ -29,6 +29,7 @@ const Profile = () => {
                     setProfileName(response.data.first_name);
                     setLastName(response.data.last_name);
                     setAddress(response.data.address);
+                    setAccountBalance(response.data.credit);
                 } else {
                     console.log(response);
                 }
@@ -44,7 +45,7 @@ const Profile = () => {
                 if (response.status === 200) {
                     console.log(response.data);
                     const orders = [...table_h, ...response.data.map((val, index) => {
-                        return [val.code, "", val.price, val.address]
+                        return [val.code, val.item_name, val.price, val.address]
                     })]
                     console.log(orders);
                     console.log(table);

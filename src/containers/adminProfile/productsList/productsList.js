@@ -17,62 +17,103 @@ const ProductsList = (props) => {
     const [showNew, setShowNew] = useState(false)
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
-    const {authToken, setAuthToken} = useAuth();
+    const { authToken, setAuthToken } = useAuth();
 
-    useEffect(() =>{
-        axios.get("http://127.0.0.1:8000/api/category/", {
-            headers: { 'Authorization': `Token ${authToken}` }
-        }).then((response) => {
-            if (response.status === 200) {
-                // console.log(response.data);
-                setCategories(response.data)
-                // console.log(categories);
-                const test = categories.find(obj => {
-                    return obj.id === 1
-                })
-                // console.log("name" in test ? test.name : test)
-            } else {
-                console.log(response);
-            }
+    const [id_prd, setid_prd] = useState(null)
+    const [name_prd, setname_prd] = useState("")
+    const [category_id_prd, setcategory_id_prd] = useState("")
+    const [price_prd, setprice_prd] = useState(0)
+    const [available_prd, setavailable_prd] = useState(0)
 
-        }, (error) => {
-            console.log(error.response);
-            
-        }) 
 
-        axios.get("http://127.0.0.1:8000/api/item/", {
-            headers: { 'Authorization': `Token ${authToken}` }
-        }).then((response) => {
-            if (response.status === 200) {
-                // console.log(response.data);
-                setProducts(response.data)
-            } else {
-                console.log(response);
-            }
-
-        }, (error) => {
-            console.log(error.response);
-            
-        }) 
+    useEffect(() => {
+        updateItems()
     }, [authToken])
+
+
+    const updateItems = () => {
+        if (authToken !== null) {
+
+
+            axios.get("http://127.0.0.1:8000/api/category/", {
+                headers: { 'Authorization': `Token ${authToken}` }
+            }).then((response) => {
+                if (response.status === 200) {
+                    // console.log(response.data);
+                    setCategories(response.data)
+                    // console.log(categories);
+                    const test = categories.find(obj => {
+                        return obj.id === 1
+                    })
+                    // console.log("name" in test ? test.name : test)
+                } else {
+                    console.log(response);
+                }
+
+            }, (error) => {
+                console.log(error.response);
+
+            })
+
+            axios.get("http://127.0.0.1:8000/api/item/", {
+                headers: { 'Authorization': `Token ${authToken}` }
+            }).then((response) => {
+                if (response.status === 200) {
+                    // console.log(response.data);
+                    setProducts(response.data)
+                } else {
+                    console.log(response);
+                }
+
+            }, (error) => {
+                console.log(error.response);
+
+            })
+            // console.log("here");
+            setShow(false);
+            setShowNew(false)
+        }
+    }
 
     const onEditClicked = (e, id) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log("clicked "+ id);
+        console.log("clicked " + id);
+
+        axios.get(`http://127.0.0.1:8000/api/item/${id}/`, {
+            headers: { 'Authorization': `Token ${authToken}` }
+        }).then((response) => {
+            if (response.status === 200) {
+                setname_prd(response.data.name)
+                setprice_prd(response.data.price)
+                setavailable_prd(response.data.available)
+                setcategory_id_prd(response.data.category)
+                setid_prd(id)
+                console.log(response.data);
+            } else {
+                console.log(response);
+            }
+
+        }, (error) => {
+            console.log(error.response);
+
+        })
+
         setShow(true)
+        
     }
 
     const onCreateClicked = (e) => {
         e.stopPropagation()
         e.preventDefault()
-        setShowNew(true)
+        setShowNew(true);
+        
 
     }
 
     return (
         <div className={styles.productsList}>
-            <MyButton className={styles.btn_new} onClick={onCreateClicked} text="+ ایجاد محصول جدید"/>
+            <MyButton className={styles.btn_new} onClick={onCreateClicked} text="+ ایجاد محصول جدید" />
             <div className={styles.items}>
 
                 {products.map((e, index) => {
@@ -81,26 +122,28 @@ const ProductsList = (props) => {
                     })
                     return (
                         <CardAdmin
-                        key={index}
-                        image={creeper}
-                        title={e.name}
-                        category={category && "name" in category ? category.name : ""}
-                        price={e.price}
-                        button={"ویرایش"}
-                        onClick={onEditClicked}
-                        available={e.available}
-                        sold={e.sold}
+                            key={index}
+                            image={creeper}
+                            title={e.name}
+                            category={category && "name" in category ? category.name : ""}
+                            price={e.price}
+                            button={"ویرایش"}
+                            onClick={onEditClicked}
+                            available={e.available}
+                            sold={e.sold}
+                            id={e.id}
                         />
                     )
                 })}
             </div>
             <Modal onClose={() => setShow(false)} show={show}>
-                <EditModal categories={categories} selected_category={0} id="3252546"/>
+                <EditModal categories={categories} selected_category={0} id={id_prd} updateItems={() => updateItems()} 
+                name={name_prd} available={available_prd} price={price_prd} category_id={category_id_prd} />
             </Modal>
-            <Modal onClose={() => setShowNew(false)} show={showNew}>
-                <CreateModal categories={categories} id=""/>
+            <Modal onClose={() => setShowNew(false)} show={showNew} >
+                <CreateModal categories={categories} id="" updateItems={() => updateItems()}/>
             </Modal>
-            
+
         </div>
     )
 }

@@ -21,7 +21,7 @@ const AdminReciepts = ({ table }) => {
                 if (response.status === 200) {
                     console.log(response.data);
                     const orders = [...table_h, ...response.data.map((val, index) => {
-                        return [val.code, "", val.price, val.address]
+                        return [val.code, val.item_name, val.price, val.address]
                     })]
                     setOrders(orders)
                     setshowOrders(orders)

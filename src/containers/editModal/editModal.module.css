@@ -60,6 +60,24 @@
     box-shadow: 0px 10px 12px -11px #009DFF;
     margin-top: 20px;
 }
+.rm_btn{
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 2px 10px;
+    background-color: rgb(179, 1, 1);
+    color: white;
+    box-shadow: 0px 10px 12px -11px red;
+    margin-top: 20px;
+}
+
+.rm_btn:hover{
+    background-color: rgb(172, 59, 59);
+}
+
+.rm_btn:active{
+    background-color: rgb(92, 1, 1);
+}
 
 .btn:hover{
     background-color: #0167a7;
