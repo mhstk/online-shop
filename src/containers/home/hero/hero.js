@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styles from "./hero.module.css";
 import clock_img from "../../../assets/clock.png"
 import ocean_img from "../../../assets/ocean.jpg"
@@ -28,13 +28,13 @@ const Hero = (props) => {
         10000,
     )
 
-
+    const inputRef = useRef();
 
     return (
         <div className={styles.hero}>
             <h1>در محصولات سایت جستجو کنید...</h1>
-            <input type="text" placeholder="نام محصول خود را وارد کنید"/>
-            <button>جستجو کنید</button>
+            <input ref={inputRef} type="text" placeholder="نام محصول خود را وارد کنید"/>
+            <button onClick={() => props.setSearch(inputRef.current.value)}>جستجو کنید</button>
             {sliders[sliderIndex]}
         </div>
     );
