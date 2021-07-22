@@ -66,7 +66,7 @@ class ItemViewSet(viewsets.ModelViewSet):
             if count > item_available:
                 return Response(
                     {"details": "item is not available"},
-                    status=status.HTTP_400_BAD_REQUEST
+                    status=status.HTTP_404_NOT_FOUND
                 )
             user = self.request.user
             user_name = user.first_name + ' ' + user.last_name
@@ -74,6 +74,11 @@ class ItemViewSet(viewsets.ModelViewSet):
             item_name = item.name
             item_price = int(item.price)
             total_price = item_price * count
+            if total_price > user.credit:
+                return Response(
+                    {"details": "not enough credit"},
+                    status=status.HTTP_426_UPGRADE_REQUIRED
+                )
             code = generate_code()
             serializer.save(
                 user_name=user_name,
@@ -86,6 +91,9 @@ class ItemViewSet(viewsets.ModelViewSet):
             item.sold = item.sold + count
             item.available = item.available - count
             item.save()
+            user.credit = user.credit - total_price
+            user.save()
+
             return Response(
                 serializer.data,
                 status=status.HTTP_200_OK

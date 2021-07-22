@@ -2,38 +2,21 @@ import React from 'react';
 import styles from "./categories.module.css";
 
 const Categories = (props) => {
-    const l = [
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1",
-        "دسته بندی 1"
-    ];
     return (
-        <div className={styles.categories} style={{maxHeight:props.maxHeight}}>
+        <div className={styles.categories} style={{maxHeight: props.maxHeight}}>
             <h3>دسته‌ بندی ‌ها</h3>
             <div className={styles.line}/>
             <ul>
-                {l.map((cat,index) => {
+                {(!props.cats || props.loading) ? "loading" : props.cats.map((cat, index) => {
                     return (
                         <li key={index}>
-                            <input type="checkbox" id={index} name={cat}/>
-                            <label htmlFor="vehicle1">{cat}</label>
-                            
+                            <input type="checkbox" id={cat.id} name={cat.name} onChange={
+                                (e) => props.addCat(cat.id, e.target.checked)
+                            }/>
+                            <label htmlFor="vehicle1">{cat.name}</label>
+
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </div>
