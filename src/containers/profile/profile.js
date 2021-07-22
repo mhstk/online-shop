@@ -74,7 +74,22 @@ const Profile = () => {
 
 
 
+    const increaseCreditClicked = (e) => {
+        e.preventDefault()
+        const newCredit = accountBalance + 1000;
+        axios.patch("http://127.0.0.1:8000/user/me/", {
+            credit: newCredit
+        }, { headers: { 'Content-Type': 'application/json', 'Authorization': `Token ${authToken}` } }).then((response) => {
+            if (response.status === 200) {
+                setAccountBalance(newCredit)
+            } else {
 
+            }
+
+        }, (error) => {
+            
+        });
+    }
 
 
     return (
@@ -84,7 +99,7 @@ const Profile = () => {
                     {profileName} عزیز، خوش آمدید |
                 </h5>
                 <pre> موجودی حساب شما: {accountBalance}</pre>
-                <MyButton className={styles.btn_balance} text="افزایش موجودی" />
+                <MyButton className={styles.btn_balance} onClick={e => increaseCreditClicked(e)} text="افزایش موجودی" />
             </div>
             <Tabs className={styles.tabs} itemsList={["پروفایل", "رسید ها"]}
                 totalWidth="280" activeIndex={selectedTab}
