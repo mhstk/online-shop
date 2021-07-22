@@ -12,8 +12,8 @@ const EditModal = (props) => {
     return (
         <div className={styles.modal_body}>
 
-            {show && 
-            <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg}/>
+            {show &&
+                <ResponseModal success={modal_succ} error={modal_err} msg={modal_msg} />
             }
             <div className={styles.label_inp_cont}>
                 <label className={styles.label}>کد کالا</label>
@@ -26,11 +26,11 @@ const EditModal = (props) => {
             </div>
             <div className={styles.label_inp_cont}>
                 <label className={styles.label}>دسته بندی</label>
-                <select name="دسته بندی ها" className={styles.select} value={props.categories[props.selected_category]}>
+                <select name="دسته بندی ها" className={styles.select}>
                     {props.categories.map((val, index) => {
                         // key: index;
-                        return(
-                            <option className={styles.select_items} value={index} selected={index===props.selected_category}>{val}</option>
+                        return (
+                            <option key={val.id} className={styles.select_items} value={val.id} selected={val.id === props.selected_category}>{val.name}</option>
                         );
                     })}
                 </select>

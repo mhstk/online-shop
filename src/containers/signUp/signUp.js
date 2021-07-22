@@ -158,15 +158,12 @@ const SignUp = () => {
     const onSignUpClicked = (e) => {
         e.stopPropagation()
         e.preventDefault()
-        console.log(emailInp);
-        console.log(passwordInp);
-        console.log(addressInp);
-        console.log(firstnameInp+" "+lastnameInp);
         if (checkEmail(emailInp) && checkPassword(passwordInp) && checkAddress(addressInp) && checkFirstname(firstnameInp) && checkLastname(lastnameInp)) {
             axios.post("http://127.0.0.1:8000/user/create", {
                 username: emailInp,
                 password: passwordInp,
-                name: firstnameInp+" "+lastnameInp,
+                first_name: firstnameInp,
+                last_name: lastnameInp,
                 address: addressInp,
             },{headers: {'Content-Type' : 'application/json'}}).then((response) => {
                 if (response.status === 201) {

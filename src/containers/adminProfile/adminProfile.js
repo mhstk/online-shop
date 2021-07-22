@@ -8,7 +8,6 @@ const AdminProfile = () => {
 
     const [selectedTab, setSelectedTab] = useState(0)
     const adminName = "ادمین";
-    const products = [1,1,1,1,1];
 
     const onTabClicked = (index) => {
         setSelectedTab(index);
@@ -42,7 +41,7 @@ const AdminProfile = () => {
                 onTabClicked={onTabClicked}
             />
             <div className={styles.content_container}>
-                {(selectedTab===0) && <ProductsList products={products}/>}
+                {(selectedTab===0) && <ProductsList/>}
                 {(selectedTab===1) && <CategoriesList />}
                 {(selectedTab===2) && <AdminReciepts table={table}/>}
             </div>

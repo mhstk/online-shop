@@ -1,6 +1,6 @@
 import InputCard from "../../../components/inputCard/inputCard";
 import MyButton from "../../../components/myButton/myButton"; 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../../../components/Modal/modal";
 import styles from './profileInfo.module.css';
 import ResponseModal from "../../responseModal/responseModal";
@@ -23,6 +23,12 @@ const ProfileInfo = ({profileName, lastName, address}) => {
     const [lastnameErr, setLastnameErr] = useState({isError: false, errMsg:""})
     const [addressErr, setAddressErr] = useState({isError: false, errMsg:""})
     const [passwordErr, setPasswordErr] = useState({isError: false, errMsg:""})
+
+    useEffect(() => {
+        setFirstnameInp(profileName)
+        setlastnameInp(lastName)
+        setAddressInp(address)
+    }, [profileName, lastName, address])
 
 
     const handleFirstname = (e) => {
@@ -136,6 +142,7 @@ const ProfileInfo = ({profileName, lastName, address}) => {
         e.stopPropagation()
     }
 
+    console.log("ine " + firstnameInp + " fff " + profileName);
     return (
         <form className={styles.profile_info}>
             <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
