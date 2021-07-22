@@ -20,6 +20,9 @@ class Item(models.Model):
     available = models.IntegerField(default=0)
     sold = models.IntegerField(default=0)
 
+    class Meta:
+        ordering = ["-sold"]
+
     def __str__(self):
         return str(self.name)
 
