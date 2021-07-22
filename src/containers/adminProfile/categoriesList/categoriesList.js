@@ -15,8 +15,9 @@ const CategoriesList = () => {
     const table_h = [["نام دسته بندی", "عملیات"]]
     const [categories, setcategories] = useState(table_h)
     const { authToken, setAuthToken } = useAuth();
+    const [newCatName, setnewCatName] = useState("")
 
-    useEffect(() => {
+    const updateCats = () => {
         if (authToken !== null) {
 
 
@@ -50,16 +51,41 @@ const CategoriesList = () => {
 
             })
         }
+    }
+
+    useEffect(() => {
+        updateCats()
     }, [authToken])
 
 
     const handleRemove = (e) => {
         console.log(e.target.dataset.id);
+        e.preventDefault()
+        if (authToken !== null) {
+            axios.delete(`http://127.0.0.1:8000/api/category/${e.target.dataset.id}/`, {
+                headers: { 'Authorization': `Token ${authToken}`}
+            }).then((response) => {
+                if (response.status === 204) {
+                    console.log(response.data);
+                    // setProducts(response.data)
+                    updateCats()
+                } else {
+                    // console.log(response);
+
+                }
+
+            }, (error) => {
+                // console.log(error.response);
+
+            })
+        }
+        updateCats()
 
     }
 
     const handleEdit = e => {
         console.log(e.target.dataset.id);
+        
 
     }
 
@@ -76,13 +102,44 @@ const CategoriesList = () => {
         toggleShowNewCategory(!showNewCategory)
     }
 
+    const handleNewCat = (e) => {
+        e.preventDefault()
+        if (authToken !== null) {
+            axios.post(`http://127.0.0.1:8000/api/category/`, {
+                name: newCatName,
+            }, {
+                headers: { 'Authorization': `Token ${authToken}`, 'Content-Type': 'application/json' }
+            }).then((response) => {
+                if (response.status === 201) {
+                    console.log(response.data);
+                    // setProducts(response.data)
+                    updateCats()
+                } else {
+                    // console.log(response);
+
+                }
+
+            }, (error) => {
+                // console.log(error.response);
+
+            })
+        }
+        setnewCatName("")
+        updateCats()
+    }
+
+    const inpOnChange = e => {
+        setnewCatName(e.target.value)
+        console.log(newCatName);
+    }
+
     return (
         <div className={styles.container}>
             <MyButton className={styles.btn_new} onClick={newCategoryClicked} text="+ ایجاد دسته بندی جدید"/>
             {(showNewCategory) && 
                 <div className={styles.container_new_cat}>
-                    <InputCard className={styles.input_new_cat}  text="دسته بندی"/>
-                    <MyButton className={styles.btn_new_cat} text="اضافه کردن"/>
+                    <InputCard className={styles.input_new_cat} onChange={e => inpOnChange(e)} text="دسته بندی"/>
+                    <MyButton className={styles.btn_new_cat} onClick={e => handleNewCat(e)} text="اضافه کردن"/>
                 </div>}
             <div className={styles.categories}>
                 <div>
