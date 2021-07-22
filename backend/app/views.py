@@ -30,9 +30,34 @@ class ItemViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
     queryset = Item.objects.all()
 
+    def get_queryset(self):
+        sort = self.request.query_params.get('sort')
+        categories = self.request.query_params.get('cat')
+        search = self.request.query_params.get('search')
+        queryset = self.queryset
+        if sort:
+            if sort == "price":
+                queryset = queryset.order_by('-price')
+            if sort == "date":
+                queryset = queryset.order_by('-id')
+
+        if categories:
+            cats = categories.split(',')
+            print(cats)
+            queryset = queryset.filter(category_id__in=cats)
+        if search:
+            queryset = queryset.filter(name__contains=search)
+
+        return queryset
+
     @action(methods=['POST'], detail=True, url_path='buy')
     def buy(self, request, pk=None):
         """Upload an image to a recipe"""
+        if not self.request.user.is_authenticated:
+            return Response(
+                {"message": "not authenticated"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
         item = self.get_object()
         serializer = OrderSerializer(data=request.data)
         if serializer.is_valid():
